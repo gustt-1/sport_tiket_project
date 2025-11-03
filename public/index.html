@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体育场馆在线售票系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>体育场馆在线售票系统</h1>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="home">首页</a></li>
+                    <li><a href="#" class="nav-link" data-page="events">赛事信息</a></li>
+                    <li><a href="#" class="nav-link" data-page="message-board">留言板</a></li>
+                    <li id="user-tickets-nav" style="display: none;"><a href="#" class="nav-link" data-page="user-tickets">我的票务</a></li>
+                    <li id="admin-nav" style="display: none;"><a href="#" class="nav-link" data-page="admin">管理后台</a></li>
+                    <li id="login-nav"><a href="#" class="nav-link" data-page="login">登录</a></li>
+                    <li id="register-nav"><a href="#" class="nav-link" data-page="register">注册</a></li>
+                    <li id="logout-nav" style="display: none;"><a href="#" id="logout-btn">退出</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- 首页 -->
+            <section id="home" class="page active">
+                <h2>欢迎使用体育场馆在线售票系统</h2>
+                <div class="welcome-content">
+                    <p>本系统提供各类体育赛事的在线购票服务，包括羽毛球、足球、射击、乒乓球、篮球等多种赛事类型。</p>
+                    <p>用户可以浏览赛事信息、在线购票、查看个人票务信息，还可以在留言板上发表意见和建议。</p>
+                    <div class="featured-events">
+                        <h3>热门赛事</h3>
+                        <div id="featured-events-list" class="events-grid">
+                            <!-- 热门赛事将通过JS动态加载 -->
+                            <p>加载中...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 赛事信息 -->
+            <section id="events" class="page">
+                <h2>赛事信息</h2>
+                <div class="filter-container">
+                    <label for="event-type-filter">赛事类型：</label>
+                    <select id="event-type-filter">
+                        <option value="">全部类型</option>
+                        <option value="羽毛球">羽毛球</option>
+                        <option value="足球">足球</option>
+                        <option value="射击">射击</option>
+                        <option value="乒乓球">乒乓球</option>
+                        <option value="篮球">篮球</option>
+                    </select>
+                    <button id="filter-events-btn">筛选</button>
+                </div>
+                <div id="events-list" class="events-grid">
+                    <!-- 赛事列表将通过JS动态加载 -->
+                    <p>加载中...</p>
+                </div>
+            </section>
+
+            <!-- 赛事详情 -->
+            <section id="event-detail" class="page">
+                <h2>赛事详情</h2>
+                <div id="event-detail-content">
+                    <!-- 赛事详情将通过JS动态加载 -->
+                </div>
+                <div id="ticket-purchase-form" class="form-container">
+                    <h3>购票信息</h3>
+                    <form id="purchase-form">
+                        <input type="hidden" id="event-id">
+                        <div class="form-group">
+                            <label for="seat-type">座位类型：</label>
+                            <select id="seat-type" required>
+                                <option value="vip">贵宾座位</option>
+                                <option value="standard">标准座位</option>
+                                <option value="economy">低价座位</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticket-quantity">数量：</label>
+                            <input type="number" id="ticket-quantity" min="1" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <p>单价：<span id="ticket-price">0</span> 元</p>
+                            <p>总价：<span id="total-price">0</span> 元</p>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="purchase-btn">购买</button>
+                            <button type="button" id="back-to-events-btn">返回赛事列表</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 留言板 -->
+            <section id="message-board" class="page">
+                <h2>留言板</h2>
+                <div id="message-form-container" class="form-container">
+                    <h3>发表留言</h3>
+                    <form id="message-form">
+                        <div class="form-group">
+                            <label for="message-content">留言内容：</label>
+                            <textarea id="message-content" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="submit-message-btn">提交留言</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="messages-list">
+                    <!-- 留言列表将通过JS动态加载 -->
+                    <p>加载中...</p>
+                </div>
+            </section>
+
+            <!-- 用户票务 -->
+            <section id="user-tickets" class="page">
+                <h2>我的票务</h2>
+                <div id="user-tickets-list">
+                    <!-- 用户票务将通过JS动态加载 -->
+                    <p>加载中...</p>
+                </div>
+            </section>
+
+            <!-- 管理后台 -->
+            <section id="admin" class="page">
+                <h2>管理后台</h2>
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="venue-management">场馆管理</button>
+                    <button class="tab-btn" data-tab="event-management">赛事管理</button>
+                    <button class="tab-btn" data-tab="user-management">用户管理</button>
+                    <button class="tab-btn" data-tab="message-management">留言管理</button>
+                </div>
+                
+                <!-- 场馆管理 -->
+                <div id="venue-management" class="admin-tab-content active">
+                    <h3>场馆管理</h3>
+                    <div class="form-container">
+                        <h4>添加场馆</h4>
+                        <form id="add-venue-form">
+                            <div class="form-group">
+                                <label for="venue-name">场馆名称：</label>
+                                <input type="text" id="venue-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="venue-location">地理位置：</label>
+                                <input type="text" id="venue-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="vip-seats">贵宾座位数量：</label>
+                                <input type="number" id="vip-seats" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="standard-seats">标准座位数量：</label>
+                                <input type="number" id="standard-seats" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="economy-seats">低价座位数量：</label>
+                                <input type="number" id="economy-seats" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">添加场馆</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="venues-list">
+                        <!-- 场馆列表将通过JS动态加载 -->
+                        <p>加载中...</p>
+                    </div>
+                </div>
+                
+                <!-- 赛事管理 -->
+                <div id="event-management" class="admin-tab-content">
+                    <h3>赛事管理</h3>
+                    <div class="form-container">
+                        <h4>添加赛事</h4>
+                        <form id="add-event-form">
+                            <div class="form-group">
+                                <label for="event-name">赛事名称：</label>
+                                <input type="text" id="event-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-type">赛事类型：</label>
+                                <select id="event-type" required>
+                                    <option value="羽毛球">羽毛球</option>
+                                    <option value="足球">足球</option>
+                                    <option value="射击">射击</option>
+                                    <option value="乒乓球">乒乓球</option>
+                                    <option value="篮球">篮球</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-organizer">赛事组织者：</label>
+                                <input type="text" id="event-organizer" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="organizer-info">组织者简介：</label>
+                                <textarea id="organizer-info" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-participants">参赛队伍/参赛队员：</label>
+                                <textarea id="event-participants" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-description">赛事简介：</label>
+                                <textarea id="event-description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-start-time">开始时间：</label>
+                                <input type="datetime-local" id="event-start-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-end-time">结束时间：</label>
+                                <input type="datetime-local" id="event-end-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="event-venue">比赛场馆：</label>
+                                <select id="event-venue" required>
+                                    <!-- 场馆选项将通过JS动态加载 -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vip-price">贵宾座位票价：</label>
+                                <input type="number" id="vip-price" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="standard-price">标准座位票价：</label>
+                                <input type="number" id="standard-price" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="economy-price">低价座位票价：</label>
+                                <input type="number" id="economy-price" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ticket-sale-start">售票开始时间：</label>
+                                <input type="datetime-local" id="ticket-sale-start" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ticket-sale-end">售票结束时间：</label>
+                                <input type="datetime-local" id="ticket-sale-end" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit">添加赛事</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="admin-events-list">
+                        <!-- 赛事列表将通过JS动态加载 -->
+                        <p>加载中...</p>
+                    </div>
+                </div>
+                
+                <!-- 用户管理 -->
+                <div id="user-management" class="admin-tab-content">
+                    <h3>用户管理</h3>
+                    <div id="users-list">
+                        <!-- 用户列表将通过JS动态加载 -->
+                        <p>加载中...</p>
+                    </div>
+                </div>
+                
+                <!-- 留言管理 -->
+                <div id="message-management" class="admin-tab-content">
+                    <h3>留言管理</h3>
+                    <div id="admin-messages-list">
+                        <!-- 留言列表将通过JS动态加载 -->
+                        <p>加载中...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 登录页面 -->
+            <section id="login" class="page">
+                <h2>用户登录</h2>
+                <div class="form-container">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">用户名：</label>
+                            <input type="text" id="login-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">密码：</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">登录</button>
+                            <p>还没有账号？<a href="#" class="nav-link" data-page="register">立即注册</a></p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 注册页面 -->
+            <section id="register" class="page">
+                <h2>用户注册</h2>
+                <div class="form-container">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="register-username">用户名：</label>
+                            <input type="text" id="register-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">邮箱：</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">密码：</label>
+                            <input type="password" id="register-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">确认密码：</label>
+                            <input type="password" id="confirm-password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">注册</button>
+                            <p>已有账号？<a href="#" class="nav-link" data-page="login">立即登录</a></p>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 体育场馆在线售票系统 | 版权所有</p>
+        </div>
+    </footer>
+
+    <div id="message-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
