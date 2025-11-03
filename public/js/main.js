@@ -37,10 +37,14 @@ function updateUIForLoggedInUser() {
         document.getElementById('login-nav').style.display = 'none';
         document.getElementById('register-nav').style.display = 'none';
         document.getElementById('logout-nav').style.display = 'block';
-        document.getElementById('user-tickets-nav').style.display = 'block';
         
+        // 只对非管理员显示票务功能
         if (currentUser.isAdmin) {
+            document.getElementById('user-tickets-nav').style.display = 'none';
             document.getElementById('admin-nav').style.display = 'block';
+        } else {
+            document.getElementById('user-tickets-nav').style.display = 'block';
+            document.getElementById('admin-nav').style.display = 'none';
         }
     } else {
         document.getElementById('login-nav').style.display = 'block';
@@ -550,6 +554,14 @@ function viewEventDetails(eventId) {
             
             // 显示赛事详情页面
             showPage('event-detail');
+            
+            // 如果是管理员，隐藏购票表单
+            const ticketPurchaseForm = document.getElementById('ticket-purchase-form');
+            if (currentUser && currentUser.isAdmin) {
+                ticketPurchaseForm.style.display = 'none';
+            } else {
+                ticketPurchaseForm.style.display = 'block';
+            }
         })
         .catch(error => {
             console.error('获取赛事详情失败:', error);
