@@ -41,25 +41,40 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #1675db;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* 头部样式 */
 header {
-    background-color: #ffffff;
-    color: #333;
-    padding: 20px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-header h1 {
-    margin-bottom: 20px;
-    font-size: 36px;
+/* 系统名称盒子 */
+.system-title {
+    background-color: orange; /* 作为后备背景色 */
+    background-image: url("../images/image1.png"); /* 更新为新的图片路径 */
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.system-title h1 {
+    margin: 0;
+    font-size: 44px;
     text-align: center;
-    color: #0056b3;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* 导航菜单容器 */
+.nav-container {
+    background-color: white;
+    padding: 12px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* 导航菜单样式 */
@@ -67,6 +82,7 @@ header h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 #main-nav ul {
@@ -74,62 +90,90 @@ header h1 {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-left {
     display: flex;
-    gap: 20px;
+    gap: 140px; /* 增加导航项间距 */
+    flex-wrap: nowrap;
+    /* justify-content: center; */
+    flex: 1;
 }
 
 .nav-right {
     display: flex;
-    gap: 20px;
-    margin-left: auto;
+    gap: 10px; /* 注册和登录按钮紧挨着 */
+    position: static;
+    flex-wrap: nowrap;
+    margin-left: 400px;
+    margin-right: 100px; /* 距离右侧边缘约100px */
 }
 
 #main-nav li {
-    position: relative;
+    margin: 0;
 }
 
-#main-nav a {
-    color: #0056b3;
-    font-weight: 500;
-    padding: 8px 12px;
+/* 主要导航链接样式 */
+.nav-left a {
+    color: #333;
+    font-weight: 600;
+    padding: 12px 25px;
     border-radius: 4px;
     transition: all 0.3s ease;
     display: block;
-}
-
-#main-nav a:hover {
-    background-color: rgba(0, 86, 179, 0.1);
-    text-decoration: none;
-    transform: scale(1.1);
-}
-    gap: 20px;
-}
-
-.nav-right {
-    display: flex;
-    gap: 20px;
-}
-
-header h1 {
-    margin-bottom: 10px;
-}
-
-#main-nav ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#main-nav li {
-    margin-right: 20px;
-}
-
-#main-nav a {
+    white-space: nowrap;
+    font-size: 20px;
+    background-color: #1778da; /* 深蓝色背景 */
     color: white;
-    font-weight: bold;
+}
+
+.nav-left a:hover {
+    background-color: #0052a3;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* 用户操作按钮样式 */
+.nav-right a {
+    color: white;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: block;
+    white-space: nowrap;
+    font-size: 20px;
+    background-color: #0066cc; /* 深蓝色背景 */
+}
+
+.nav-right a:hover {
+    background-color: #0052a3;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* 退出按钮特殊样式 */
+#logout-btn {
+    color: white;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: block;
+    white-space: nowrap;
+    font-size: 20px;
+    background-color: #076ed6; /* 深蓝色背景 */
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#logout-btn:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
 }
 
 /* 主内容区域 */
@@ -165,6 +209,123 @@ h3 {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+}
+
+/* 登录和注册页面特殊样式 */
+#login .form-container,
+#register .form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #0066cc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#login .form-container:hover,
+#register .form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 登录和注册页面标题样式 */
+#login h2,
+#register h2 {
+    text-align: center;
+    color: #0066cc;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* 登录注册表单组样式 */
+#login .form-group,
+#register .form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* 登录注册表单输入框样式 */
+#login .form-group input,
+#register .form-group input,
+#login .form-group select,
+#register .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+#login .form-group input:focus,
+#register .form-group input:focus,
+#login .form-group select:focus,
+#register .form-group select:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    background-color: white;
+}
+
+/* 登录注册表单标签样式 */
+#login .form-group label,
+#register .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+}
+
+/* 登录注册按钮样式 */
+#login-form button,
+#register-form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: #0066cc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+#login-form button:hover,
+#register-form button:hover {
+    background-color: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.3);
+}
+
+/* 表单底部链接样式 */
+#login .form-group:last-child,
+#register .form-group:last-child {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#login .form-group a,
+#register .form-group a {
+    color: #0066cc;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#login .form-group a:hover,
+#register .form-group a:hover {
+    color: #0052a3;
+    text-decoration: underline;
 }
 
 .form-group {
@@ -266,6 +427,199 @@ h3 {
 
 #event-detail-content .event-info p {
     margin-bottom: 8px;
+}
+
+/* 票价信息样式 */
+.price-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 30px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.price-item {
+    flex: 1;
+    min-width: 230px;
+    padding: 25px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+
+/* 通用悬浮效果 */
+.price-item:hover {
+    transform: translateY(-8px);
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* 选中状态 */
+.price-item.selected {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    animation: selectedPulse 2s infinite alternate;
+}
+
+@keyframes selectedPulse {
+    0% {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+    100% {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+}
+
+/* 添加座位图标 */
+.price-item::before {
+    content: '🎫';
+    display: block;
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover::before {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 1;
+}
+
+/* 装饰角 */
+.price-item::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 0 0 12px;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover::after {
+    opacity: 0.5;
+}
+
+/* 贵宾座位样式 - 最高级 */
+.price-vip {
+    background: linear-gradient(135deg, #ffd700 0%, #f0c14b 100%);
+    color: #8b5a2b;
+    font-size: 19px;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    border: 2px solid #b8860b;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.price-vip::before {
+    content: '👑';
+}
+
+.price-vip::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23b8860b' d='M0,0 L100,0 L100,100 Z'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+}
+
+.price-vip:hover {
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.price-vip.selected {
+    border: 3px solid #b8860b;
+    background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #f0c14b 100%);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    border-style: double;
+}
+
+/* 标准座位样式 - 中级 */
+.price-standard {
+    background: linear-gradient(135deg, #64b5f6 0%, #2196f3 100%);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+    border: 2px solid #1976d2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.price-standard::before {
+    content: '⭐';
+}
+
+.price-standard::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%231976d2' d='M0,0 L100,0 L100,100 Z'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+}
+
+.price-standard:hover {
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+}
+
+.price-standard.selected {
+    border: 3px solid #1565c0;
+    background: linear-gradient(135deg, #90caf9 0%, #64b5f6 50%, #2196f3 100%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border-style: double;
+}
+
+/* 低价座位样式 */
+.price-economy {
+    background: linear-gradient(135deg, #cd7f32 0%, #a0522d 100%);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 6px 20px rgba(205, 127, 50, 0.3);
+    border: 2px solid #8b4513;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.price-economy::before {
+    content: '🎯';
+}
+
+.price-economy::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%238b4513' d='M0,0 L100,0 L100,100 Z'/%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+}
+
+.price-economy:hover {
+    box-shadow: 0 8px 25px rgba(205, 127, 50, 0.4);
+}
+
+.price-economy.selected {
+    border: 3px solid #8b4513;
+    background: linear-gradient(135deg, #deb887 0%, #cd7f32 50%, #a0522d 100%);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border-style: double;
+}
+
+/* 价格部分特殊样式 */
+.price-item span.price-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover span.price-value {
+    transform: scale(1.1);
 }
 
 /* 留言板样式 */

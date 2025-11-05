@@ -537,10 +537,10 @@ function viewEventDetails(eventId) {
                     <p><strong>参赛队伍/参赛队员：</strong>${event.participants}</p>
                     <p><strong>赛事简介：</strong>${event.description || '无'}</p>
                     <p><strong>票价信息：</strong></p>
-                    <ul>
-                        <li>贵宾座位：${event.vip_price} 元</li>
-                        <li>标准座位：${event.standard_price} 元</li>
-                        <li>低价座位：${event.economy_price} 元</li>
+                    <ul class="price-list">
+                        <li class="price-item price-vip">贵宾座位：<span class="price-value">${event.vip_price} 元</span></li>
+                        <li class="price-item price-standard">标准座位：<span class="price-value">${event.standard_price} 元</span></li>
+                        <li class="price-item price-economy">低价座位：<span class="price-value">${event.economy_price} 元</span></li>
                     </ul>
                     <p><strong>售票时间：</strong>${saleStartDate} 至 ${saleEndDate}</p>
                 </div>
@@ -551,6 +551,80 @@ function viewEventDetails(eventId) {
             
             // 更新票价显示
             updateTicketPrice();
+            
+            // 为票价项目添加点击事件
+            document.querySelectorAll('.price-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // 移除所有选中状态
+                    document.querySelectorAll('.price-item').forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                    
+                    // 添加当前选中状态
+                    this.classList.add('selected');
+                    
+                    // 获取对应的座位类型
+                    let seatType = '';
+                    if (this.classList.contains('price-vip')) {
+                        seatType = 'vip';
+                    } else if (this.classList.contains('price-standard')) {
+                        seatType = 'standard';
+                    } else if (this.classList.contains('price-economy')) {
+                        seatType = 'economy';
+                    }
+                    
+                    // 设置座位类型选择器的值
+                    if (seatType) {
+                        const seatTypeSelect = document.getElementById('seat-type');
+                        if (seatTypeSelect) {
+                            // 临时移除事件监听器，避免循环触发
+                            seatTypeSelect.removeEventListener('change', syncPriceItemSelection);
+                            seatTypeSelect.value = seatType;
+                            // 更新票价
+                            updateTicketPrice();
+                            // 重新添加事件监听器
+                            seatTypeSelect.addEventListener('change', syncPriceItemSelection);
+                        }
+                    }
+                });
+            });
+            
+            // 同步座位类型选择器和票价项目的选中状态
+            function syncPriceItemSelection() {
+                const seatType = this.value;
+                
+                // 移除所有选中状态
+                document.querySelectorAll('.price-item').forEach(item => {
+                    item.classList.remove('selected');
+                });
+                
+                // 添加对应票价项目的选中状态
+                if (seatType === 'vip') {
+                    document.querySelector('.price-vip')?.classList.add('selected');
+                } else if (seatType === 'standard') {
+                    document.querySelector('.price-standard')?.classList.add('selected');
+                } else if (seatType === 'economy') {
+                    document.querySelector('.price-economy')?.classList.add('selected');
+                }
+            }
+            
+            // 添加座位类型选择器的变化事件
+            const seatTypeSelect = document.getElementById('seat-type');
+            if (seatTypeSelect) {
+                seatTypeSelect.addEventListener('change', syncPriceItemSelection);
+                
+                // 初始设置：根据当前座位类型选择器的值设置票价项目的选中状态
+                setTimeout(() => {
+                    const initialSeatType = seatTypeSelect.value;
+                    if (initialSeatType === 'vip') {
+                        document.querySelector('.price-vip')?.classList.add('selected');
+                    } else if (initialSeatType === 'standard') {
+                        document.querySelector('.price-standard')?.classList.add('selected');
+                    } else if (initialSeatType === 'economy') {
+                        document.querySelector('.price-economy')?.classList.add('selected');
+                    }
+                }, 0);
+            }
             
             // 显示赛事详情页面
             showPage('event-detail');
@@ -859,7 +933,7 @@ function loadAdminEvents() {
                         <p><strong>时间：</strong>${startDate} 至 ${endDate}</p>
                         <p><strong>场馆：</strong>${event.venue_name}</p>
                         <p><strong>组织者：</strong>${event.organizer}</p>
-                        <p><strong>票价：</strong>贵宾 ${event.vip_price} 元，标准 ${event.standard_price} 元，低价 ${event.economy_price} 元</p>
+                        <p><strong>票价：</strong>贵宾 <span class="price-value">${event.vip_price} 元</span>，标准 <span class="price-value">${event.standard_price} 元</span>，低价 <span class="price-value">${event.economy_price} 元</span></p>
                     </div>
                 `;
             });
