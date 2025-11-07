@@ -494,7 +494,7 @@ function createEventCard(event) {
     
     return `
         <div class="event-card">
-            <span class="event-type">${event.type}</span>
+            <span class="event-type" data-type="${event.type}">${event.type}</span>
             <h3>${event.name}</h3>
             <p><strong>时间：</strong>${startDate}</p>
             <p><strong>场馆：</strong>${event.venue_name}</p>

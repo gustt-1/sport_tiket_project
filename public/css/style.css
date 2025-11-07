@@ -117,63 +117,157 @@ header {
 }
 
 /* 主要导航链接样式 */
-.nav-left a {
-    color: #333;
-    font-weight: 600;
-    padding: 12px 25px;
-    border-radius: 4px;
+/* 所有导航按钮统一样式 - 增大尺寸突出显示 */
+.nav-left a,
+.nav-right a,
+#logout-btn,
+.login-btn,
+.logout-btn {
+    color: white;
+    font-weight: 700; /* 加粗字体 */
+    padding: 12px 20px; /* 增大内边距 */
+    border-radius: 6px; /* 稍大圆角 */
     transition: all 0.3s ease;
     display: block;
     white-space: nowrap;
-    font-size: 20px;
+    font-size: 18px; /* 增大字体 */
+    height: 48px; /* 增大高度 */
+    line-height: 24px; /* 调整行高 */
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+/* 左侧导航链接默认样式 */
+.nav-left a {
     background-color: #1778da; /* 深蓝色背景 */
-    color: white;
 }
 
 .nav-left a:hover {
-    background-color: #0052a3;
-    text-decoration: none;
-    transform: translateY(-2px);
+    background-color: #135db1; /* 悬停时的颜色 */
+    transform: translateY(-3px); /* 更明显的上移 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 增强阴影效果 */
 }
 
-/* 用户操作按钮样式 */
-.nav-right a {
-    color: white;
-    font-weight: 600;
-    padding: 12px 25px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: block;
-    white-space: nowrap;
-    font-size: 20px;
+/* 注册按钮样式 */
+#register-nav a {
     background-color: #0066cc; /* 深蓝色背景 */
 }
 
-.nav-right a:hover {
-    background-color: #0052a3;
-    text-decoration: none;
-    transform: translateY(-2px);
+#register-nav a:hover {
+    background-color: #0052a3; /* 悬停时的颜色 */
+    transform: translateY(-3px); /* 更明显的上移 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 增强阴影效果 */
 }
 
-/* 退出按钮特殊样式 */
+/* 登录按钮样式 */
+.login-btn,
+#login-nav a {
+    background-color: #28a745;
+    position: relative;
+    margin-left: 10px;
+}
+
+.login-btn::before,
+#login-nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffc107;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform .3s ease;
+    z-index: 1;
+}
+
+.login-btn:hover,
+#login-nav a:hover {
+    background-color: #218838;
+    transform: translateY(-3px); /* 更明显的上移 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 增强阴影效果 */
+}
+
+.login-btn:hover::before,
+#login-nav a:hover::before {
+    transform: scaleX(1);
+}
+
+/* 退出按钮样式 */
+.logout-btn,
 #logout-btn {
-    color: white;
-    font-weight: 600;
-    padding: 12px 25px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: block;
-    white-space: nowrap;
-    font-size: 20px;
-    background-color: #076ed6; /* 深蓝色背景 */
+    background-color: #dc3545;
+    position: relative;
+    margin-left: 10px;
     border: none;
     cursor: pointer;
     font-family: inherit;
 }
 
+.logout-btn::before,
+#logout-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffc107;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform .3s ease;
+    z-index: 1;
+}
+
+.logout-btn::after,
+#logout-btn::after {
+    content: "\2192";
+    margin-left: 5px;
+    transition: transform .3s ease;
+    display: inline-block;
+}
+
+.logout-btn:hover,
 #logout-btn:hover {
-    background-color: #0052a3;
-    transform: translateY(-2px);
+    background-color: #c82333;
+    transform: translateY(-3px); /* 更明显的上移 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 增强阴影效果 */
+}
+
+.logout-btn:hover::before,
+#logout-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.logout-btn:hover::after,
+#logout-btn:hover::after {
+    transform: translateX(5px);
+}
+
+/* 留言板按钮样式 - 假设ID为message-board-nav */
+#message-board-nav a {
+    background-color: #6c757d;
+}
+
+#message-board-nav a:hover {
+    background-color: #545b62;
+    transform: translateY(-3px); /* 更明显的上移 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 增强阴影效果 */
+}
+
+/* 导航栏布局调整 */
+#main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#main-nav li {
+    display: flex;
+    align-items: center;
 }
 
 /* 主内容区域 */
@@ -384,12 +478,65 @@ h3 {
 
 .event-card .event-type {
     display: inline-block;
-    background-color: #28a745;
     color: white;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 12px;
+    padding: 5px 12px; /* 增大内边距 */
+    border-radius: 6px; /* 增大圆角 */
+    font-size: 14px; /* 增大字体 */
     margin-bottom: 10px;
+    font-weight: 600; /* 加粗 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    transition: all 0.3s ease;
+}
+
+/* 足球赛事 - 蓝色 */
+.event-card .event-type[data-type="足球"] {
+    background-color: #007bff;
+}
+
+/* 篮球赛事 - 橙色 */
+.event-card .event-type[data-type="篮球"] {
+    background-color: #fd7e14;
+}
+
+/* 射击赛事 - 紫色 */
+.event-card .event-type[data-type="射击"] {
+    background-color: #6f42c1;
+}
+
+/* 网球赛事 - 绿色 */
+.event-card .event-type[data-type="网球"] {
+    background-color: #28a745;
+}
+
+/* 游泳赛事 - 青色 */
+.event-card .event-type[data-type="游泳"] {
+    background-color: #17a2b8;
+}
+
+/* 田径赛事 - 红色 */
+.event-card .event-type[data-type="田径"] {
+    background-color: #dc3545;
+}
+
+/* 乒乓球赛事 - 黄色 */
+.event-card .event-type[data-type="乒乓球"] {
+    background-color: #ffc107;
+}
+
+/* 羽毛球赛事 - 青色 */
+.event-card .event-type[data-type="羽毛球"] {
+    background-color: #17a2b8;
+}
+
+/* 其他运动 - 默认颜色 */
+.event-card .event-type[data-type="其他"] {
+    background-color: #6c757d;
+}
+
+/* 悬停效果 */
+.event-card .event-type:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .event-card .view-details {
@@ -620,6 +767,106 @@ h3 {
 
 .price-item:hover span.price-value {
     transform: scale(1.1);
+}
+
+/* 登录按钮样式 */
+.login-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all .3s ease;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffc107;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform .3s ease;
+    z-index: 1;
+}
+
+.login-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:hover::before {
+    transform: scaleX(1);
+}
+
+/* 退出按钮样式 */
+.logout-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all .3s ease;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.logout-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffc107;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform .3s ease;
+    z-index: 1;
+}
+
+.logout-btn::after {
+    content: "\2192";
+    margin-left: 5px;
+    transition: transform .3s ease;
+    display: inline-block;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.logout-btn:hover::after {
+    transform: translateX(5px);
+}
+
+/* 确保导航栏中的按钮不会被其他样式覆盖 */
+.nav-right .login-btn,
+.nav-right .logout-btn {
+    font-weight: 600;
+}
+
+/* 调整导航项之间的间距 */
+.nav-right li {
+    margin-left: 5px;
 }
 
 /* 留言板样式 */
