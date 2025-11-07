@@ -468,7 +468,9 @@ h3 {
 
 .event-card h3 {
     color: #007bff;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .event-card p {
@@ -566,6 +568,10 @@ h3 {
 #event-detail-content h3 {
     color: #007bff;
     margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #event-detail-content .event-info {
@@ -583,15 +589,15 @@ h3 {
     margin: 20px 0 30px 0;
     display: flex;
     justify-content: space-between;
-    gap: 25px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
 .price-item {
     flex: 1;
-    min-width: 230px;
-    padding: 25px 20px;
-    border-radius: 12px;
+    min-width: 100px;
+    padding: 20px 8px;
+    border-radius: 8px;
     transition: all 0.3s ease;
     cursor: pointer;
     text-align: center;
@@ -602,7 +608,7 @@ h3 {
 
 /* 通用悬浮效果 */
 .price-item:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     animation: pulse 1.5s infinite alternate;
 }
 
@@ -617,7 +623,7 @@ h3 {
 
 /* 选中状态 */
 .price-item.selected {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     animation: selectedPulse 2s infinite alternate;
 }
@@ -631,28 +637,13 @@ h3 {
     }
 }
 
-/* 添加座位图标 */
-.price-item::before {
-    content: '🎫';
-    display: block;
-    font-size: 36px;
-    margin-bottom: 10px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.price-item:hover::before {
-    transform: scale(1.2) rotate(5deg);
-    opacity: 1;
-}
-
 /* 装饰角 */
 .price-item::after {
     content: '';
     position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 0 0 0 12px;
+    width: 25px;
+    height: 25px;
+    border-radius: 0 0 0 8px;
     bottom: 0;
     right: 0;
     opacity: 0.3;
@@ -667,15 +658,11 @@ h3 {
 .price-vip {
     background: linear-gradient(135deg, #ffd700 0%, #f0c14b 100%);
     color: #8b5a2b;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: bold;
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
-    border: 2px solid #b8860b;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    border: 1px solid #b8860b;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
-}
-
-.price-vip::before {
-    content: '👑';
 }
 
 .price-vip::after {
@@ -684,11 +671,11 @@ h3 {
 }
 
 .price-vip:hover {
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
 .price-vip.selected {
-    border: 3px solid #b8860b;
+    border: 2px solid #b8860b;
     background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #f0c14b 100%);
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
     border-style: double;
@@ -698,15 +685,11 @@ h3 {
 .price-standard {
     background: linear-gradient(135deg, #64b5f6 0%, #2196f3 100%);
     color: #ffffff;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 600;
-    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
-    border: 2px solid #1976d2;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    border: 1px solid #1976d2;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.price-standard::before {
-    content: '⭐';
 }
 
 .price-standard::after {
@@ -715,11 +698,11 @@ h3 {
 }
 
 .price-standard:hover {
-    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
 }
 
 .price-standard.selected {
-    border: 3px solid #1565c0;
+    border: 2px solid #1565c0;
     background: linear-gradient(135deg, #90caf9 0%, #64b5f6 50%, #2196f3 100%);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     border-style: double;
@@ -729,15 +712,11 @@ h3 {
 .price-economy {
     background: linear-gradient(135deg, #cd7f32 0%, #a0522d 100%);
     color: #fff;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
-    box-shadow: 0 6px 20px rgba(205, 127, 50, 0.3);
-    border: 2px solid #8b4513;
+    box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+    border: 1px solid #8b4513;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.price-economy::before {
-    content: '🎯';
 }
 
 .price-economy::after {

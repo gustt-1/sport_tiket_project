@@ -423,8 +423,8 @@ function loadFeaturedEvents() {
                 return;
             }
             
-            // 只显示最多4个赛事
-            const featuredEvents = events.slice(0, 4);
+            // 只显示最多6个赛事
+            const featuredEvents = events.slice(0, 6);
             
             let html = '';
             featuredEvents.forEach(event => {
