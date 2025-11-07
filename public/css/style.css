@@ -305,6 +305,122 @@ h3 {
     margin-bottom: 20px;
 }
 
+#ticket-purchase-form {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+/* 购票表单特殊布局 */
+#ticket-purchase-form .form-group {
+    margin-bottom: 15px;
+}
+
+#ticket-purchase-form .seat-quantity-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+#ticket-purchase-form .seat-quantity-group > div {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ticket-purchase-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+#ticket-purchase-form select,
+#ticket-purchase-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 价格信息和按钮放在右侧 */
+#ticket-purchase-form .price-info {
+    text-align: right;
+    margin-bottom: 20px;
+    padding-right: 20px;
+}
+
+#ticket-purchase-form .price-info p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+/* 价格样式增强 */
+#ticket-purchase-form #ticket-price,
+#ticket-purchase-form #total-price {
+    color: #e63946;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px 8px;
+    background-color: #fff1f2;
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+#ticket-purchase-form #total-price {
+    color: #2a9d8f;
+    font-size: 24px;
+    background-color: #e8f5f3;
+    padding: 4px 10px;
+}
+
+/* 按钮区域采用不同的布局方式 */
+#ticket-purchase-form .form-actions {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+    padding-right: 0;
+}
+
+/* 返回按钮居中 */
+#ticket-purchase-form #back-to-events-btn {
+    background-color: #e63946;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#ticket-purchase-form #back-to-events-btn:hover {
+    background-color: #c1121f;
+}
+
+/* 购买按钮放在右侧 */
+#ticket-purchase-form #purchase-btn {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    right: 20px;
+}
+
+#ticket-purchase-form #purchase-btn:hover {
+    background-color: #1d6d61;
+}
+
 /* 登录和注册页面特殊样式 */
 #login .form-container,
 #register .form-container {
@@ -874,12 +990,22 @@ h3 {
 }
 
 /* 用户票务样式 */
+#user-tickets-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 5px;
+}
+
 .ticket-card {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 15px;
     margin-bottom: 15px;
+    width: 48%; /* 略微增大宽度，减小左右间距 */
+    box-sizing: border-box;
 }
 
 .ticket-card h3 {
@@ -913,8 +1039,25 @@ h3 {
     color: white;
 }
 
+/* 票务卡片底部布局 */
+.ticket-card {
+    position: relative;
+}
+
+.ticket-card .ticket-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
 .ticket-card .cancel-ticket {
     background-color: #dc3545;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .ticket-card .cancel-ticket:hover {

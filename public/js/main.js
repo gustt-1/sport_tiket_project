@@ -708,7 +708,9 @@ function loadUserTickets() {
                             ${ticket.status === 'active' ? '有效' : '已取消'}
                         </span>
                         ${ticket.status === 'active' ? 
-                            `<button class="cancel-ticket" data-ticket-id="${ticket.id}">取消订票</button>` : ''}
+                            `<div class="ticket-footer">
+                                <button class="cancel-ticket" data-ticket-id="${ticket.id}">取消订票</button>
+                            </div>` : ''}
                     </div>
                 `;
             });

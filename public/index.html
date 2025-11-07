@@ -87,23 +87,25 @@
                     <h3>购票信息</h3>
                     <form id="purchase-form">
                         <input type="hidden" id="event-id">
-                        <div class="form-group">
-                            <label for="seat-type">座位类型：</label>
-                            <select id="seat-type" required>
-                                <option value="vip">贵宾座位</option>
-                                <option value="standard">标准座位</option>
-                                <option value="economy">低价座位</option>
-                            </select>
+                        <div class="seat-quantity-group">
+                            <div>
+                                <label for="seat-type">座位类型：</label>
+                                <select id="seat-type" required>
+                                    <option value="vip">贵宾座位</option>
+                                    <option value="standard">标准座位</option>
+                                    <option value="economy">低价座位</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="ticket-quantity">数量：</label>
+                                <input type="number" id="ticket-quantity" min="1" value="1" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="ticket-quantity">数量：</label>
-                            <input type="number" id="ticket-quantity" min="1" value="1" required>
-                        </div>
-                        <div class="form-group">
+                        <div class="price-info">
                             <p>单价：<span id="ticket-price">0</span> 元</p>
                             <p>总价：<span id="total-price">0</span> 元</p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-actions">
                             <button type="submit" id="purchase-btn">购买</button>
                             <button type="button" id="back-to-events-btn">返回赛事列表</button>
                         </div>
